@@ -21,10 +21,18 @@ grad = zeros(size(theta));
 %
 sum = 0;
 for i = 1:m
-	sum += -y(i) * log(sigmoid(theta' * X(i))) - (1 - y(i)) * log(sigmoid(theta' * X(i)));
+	sum += -1 * y(i) * log(sigmoid(theta' * X(i))) - (1 - y(i)) * log(1 - (sigmoid(theta' * X(i))));
 endfor
 
-J = sum / m
+J = sum / m;
+
+diffy = sigmoid(X * theta) - y;
+
+
+
+for i = 1:columns(X)
+	grad(i) = ((diffy .* X(:,i))' * ones(m,1)) / m;
+endfor
 
 
 
