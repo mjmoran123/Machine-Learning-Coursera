@@ -30,6 +30,23 @@ J = (sum / m) + ((reg_sum * lambda) / (2 * m));
 
 
 
+diffy = sigmoid(X * theta) - y;
+
+
+
+
+grad(1) = ((diffy .* X(:,1))' * ones(m,1)) / m;
+
+
+
+
+for j = 2:columns(X)
+	grad(j) = ((diffy .* X(:,j))' * ones(m,1)) / m + (lambda / m) * theta(j);
+endfor
+
+
+
+
 
 % =============================================================
 
