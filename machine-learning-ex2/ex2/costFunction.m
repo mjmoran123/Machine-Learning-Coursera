@@ -19,7 +19,19 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+sum = 0;
+for i = 1:m
+	sum += (-y(i) * log(sigmoid(X(i,:) * theta))) - ((1 - y(i)) * log(1 - (sigmoid(X(i,:) * theta))));
+endfor
+J = sum / m;
 
+diffy = sigmoid(X * theta) - y;
+
+
+
+for i = 1:columns(X)
+	grad(i) = ((diffy .* X(:,i))' * ones(m,1)) / m;
+endfor
 
 
 
