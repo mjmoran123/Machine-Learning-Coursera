@@ -49,7 +49,14 @@ a3 = sigmoid(z3);
 a3 = a3';
 
 thing = -1 * y_matrix .* log(a3) - (1 .- y_matrix) .* log(1 .- a3);
-J = sum(thing(:)) / m;
+temp = sum(thing(:)) / m;
+
+T1_squared = Theta1 .^ 2;
+T2_squared = Theta2 .^ 2;
+T1_squared = T1_squared(:,2:end);
+T2_squared = T2_squared(:,2:end);
+reg_thing = sum((T1_squared)(:)) + sum((T2_squared)(:));
+J = temp + (lambda / (2 * m)) * reg_thing;
 
 
 %
