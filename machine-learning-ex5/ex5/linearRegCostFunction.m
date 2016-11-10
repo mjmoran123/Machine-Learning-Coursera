@@ -19,7 +19,19 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+%X = [ones(size(X, 1), 1) X]
+X_T = transpose(X);
+theta_T = transpose(theta);
+h = theta_T * X_T;
+h_T = transpose(h);
+diff = h_T .- y;
+diff_squared = diff .^ 2;
+sub = (0.5 * (1 / m)) * sum(diff_squared);
 
+
+reg = (0.5) * (lambda) * (1 / m) * sum(theta(2:end) .^ 2);
+
+J = sub + reg;
 
 
 
