@@ -34,6 +34,11 @@ reg = (0.5) * (lambda) * (1 / m) * sum(theta(2:end) .^ 2);
 J = sub + reg;
 
 
+acc = X * theta;
+grad = ((X_T * (acc - y)) / m) + ((lambda / m) * [0; theta(2:end)]);
+
+
+
 
 
 
