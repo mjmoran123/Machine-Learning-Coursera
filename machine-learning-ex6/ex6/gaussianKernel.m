@@ -16,11 +16,13 @@ sim = 0;
 %
 %
 
-
+diff = x1 - x2;
+sqrd_sum = transpose(diff) * diff;
+sim = exp(sqrd_sum / (-2 * sigma ^ 2));
 
 
 
 
 % =============================================================
-    
+
 end
