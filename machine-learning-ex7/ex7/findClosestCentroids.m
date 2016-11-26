@@ -20,8 +20,17 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
-
+s = rows(X)
+for i = 1:s
+	min = 99999999999999;
+	for j = 1:K
+		dist = norm(X(i,:) - centroids(j,:),2);
+		if dist < min
+			min = dist;
+			idx(i) = j;
+		endif
+	endfor
+endfor
 
 
 
