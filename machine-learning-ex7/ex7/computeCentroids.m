@@ -26,7 +26,12 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
+for i = 1:K
+	tempIndices = idx == i;
+	pts = X .* tempIndices;
+	num = (1 / sum(tempIndices));
+	centroids(i,:) = num * sum(pts);
+endfor
 
 
 
